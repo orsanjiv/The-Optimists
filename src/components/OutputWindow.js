@@ -27,21 +27,22 @@ const OutputWindow = ({ outputDetails }) => {
       );
     } else {
       return (
-        <pre className="px-2 py-1 font-normal text-xs text-red-500">
+        <pre className="font-normal text-xs text-red-500">
           {atob(outputDetails?.stderr)}
         </pre>
       );
     }
   };
   return (
-    <>
-      <h1 className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 mb-2">
+    <div className="h-[50%]">
+
+      <h1 className="font-medium pl-2 bg-clip-text text-white  absolute top-0 border-gray-400 p-2 border-b-[1px] w-[30%]">
         Output
       </h1>
-      <div className="w-full h-56 bg-[#1e293b] rounded-md text-white font-normal text-sm overflow-y-auto">
+      <div className="h-full bg-gray-600 border-l-[1px] border-gray-400 text-white font-normal text-sm overflow-y-auto">
         {outputDetails ? <>{getOutput()}</> : null}
       </div>
-    </>
+    </div>
   );
 };
 
