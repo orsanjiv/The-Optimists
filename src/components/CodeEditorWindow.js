@@ -19,6 +19,9 @@ const CodeEditorWindow = ({ onChange, language, code, theme }) => {
     onChange("code", value);
   };
 
+  // for navigation options
+
+
   return (
 
     <main>
@@ -29,9 +32,9 @@ const CodeEditorWindow = ({ onChange, language, code, theme }) => {
         {navLinks.map((nav,index) => (
           <li
             key = {nav.id}
-            className="hover:bg-gray-700 px-2 py-1 rounded-lg text-white font-medium"
+            className="hover:bg-gray-700 px-2 py-1 rounded-lg text-white font-medium cursor-pointer"
           >
-            <a href="{`#${nav.id}">{nav.title}</a>
+            {nav.title}
           </li>
         ))}
       </ul>
