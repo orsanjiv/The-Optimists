@@ -224,6 +224,8 @@ const Landing = () => {
           />
         </div>
 
+{/* output and input window  */}
+
         <div className="right-container flex flex-shrink-0 w-[30%] flex-col">
           <OutputWindow outputDetails={outputDetails} />
           <div className="flex flex-col items-end">
@@ -244,6 +246,9 @@ const Landing = () => {
           </div>
           {outputDetails && <OutputDetails outputDetails={outputDetails} />}
         </div>
+        
+{/* youtube embedded */}
+
       </div>
       {/* <Footer /> */}
     </main>
