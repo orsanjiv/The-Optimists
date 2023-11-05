@@ -1,6 +1,13 @@
-import React from "react";
+import React from "react"; 
+import {GrFormClose} from 'react-icons/gr';
+import { useState } from 'react';
 
 const OutputWindow = ({ outputDetails }) => {
+
+  const [buttonClass, setButtonClass] = useState('');
+  const handleClick = () => {
+    setButtonClass("hidden")
+  }
   const getOutput = () => {
     let statusId = outputDetails?.status?.id;
 
@@ -34,11 +41,17 @@ const OutputWindow = ({ outputDetails }) => {
     }
   };
   return (
-    <div className="h-[50%]">
+    <div className={`h-[50%] ${buttonClass}`}>
 
-      <h1 className="font-medium pl-2 bg-clip-text text-white  absolute top-0 border-gray-400 p-2 border-b-[1px] w-[30%]">
+    <div className="flex justify-between items-center border-l-[1px] px-2   bg-gray-600 border-gray-40 border-b-[1px]">
+      <h1 className="font-medium bg-clip-text text-white 0 p-2">
         Output
       </h1>
+      <GrFormClose size={25} className="bg-gray-700 rounded-full  cursor-pointer hover:bg-gray-300" 
+      onClick={handleClick}/>
+    </div>
+
+      
       <div className="h-full bg-gray-600 border-l-[1px] border-gray-400 text-white font-normal text-sm overflow-y-auto">
         {outputDetails ? <>{getOutput()}</> : null}
       </div>
