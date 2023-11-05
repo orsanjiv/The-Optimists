@@ -8,11 +8,17 @@ import {BiGitBranch} from 'react-icons/bi'
 import {FiSettings} from 'react-icons/fi'
 import {RiAccountCircleLine} from 'react-icons/ri'
 import {BsFillXDiamondFill} from 'react-icons/bs'
+import {BiLogOut} from 'react-icons/bi'
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 
 const CodeEditorWindow = ({ onChange, language, code, theme }) => {
   const [value, setValue] = useState(code || "");
+  const { loginWithRedirect } = useAuth0();
+  const { logout } = useAuth0();
+  const { user, isAuthenticated} = useAuth0();
+
 
   const handleEditorChange = (value) => {
     setValue(value);
@@ -50,9 +56,18 @@ const CodeEditorWindow = ({ onChange, language, code, theme }) => {
 
         <div className="space-y-2">
           <FiSettings size={25}/>
-          <RiAccountCircleLine size={25}/>
+          {
+            isAuthenticated && (
+            <div>
+            <RiAccountCircleLine size={25}/>
+              {/* <h2>{user.name}</h2> to do */}
+            </div> 
+          )} 
+          {
+            isAuthenticated?(<button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}><BiLogOut size={25}/></button>):(<button onClick={() => loginWithRedirect()}><RiAccountCircleLine size={25}/></button>)
+          }
+        
         </div>
-
       </div>
 
       <Editor
