@@ -1,13 +1,6 @@
-import React from "react"; 
-import {GrFormClose} from 'react-icons/gr';
-import { useState } from 'react';
+import React from "react";
 
 const OutputWindow = ({ outputDetails }) => {
-
-  const [buttonClass, setButtonClass] = useState('');
-  const handleClick = () => {
-    setButtonClass("hidden")
-  }
   const getOutput = () => {
     let statusId = outputDetails?.status?.id;
 
@@ -34,28 +27,21 @@ const OutputWindow = ({ outputDetails }) => {
       );
     } else {
       return (
-        <pre className="font-normal text-xs text-red-500">
+        <pre className="px-2 py-1 font-normal text-xs text-red-500">
           {atob(outputDetails?.stderr)}
         </pre>
       );
     }
   };
   return (
-    <div className={`h-[50%] ${buttonClass}`}>
-
-    <div className="flex justify-between items-center border-l-[1px] px-2   bg-gray-600 border-gray-40 border-b-[1px]">
-      <h1 className="font-medium bg-clip-text text-white 0 p-2">
+    <>
+      <h1 className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 mb-2">
         Output
       </h1>
-      <GrFormClose size={25} className="bg-gray-700 rounded-full  cursor-pointer hover:bg-gray-300" 
-      onClick={handleClick}/>
-    </div>
-
-      
-      <div className="h-full bg-gray-600 border-l-[1px] border-gray-400 text-white font-normal text-sm overflow-y-auto">
+      <div className="w-full h-56 bg-[#1e293b] rounded-md text-white font-normal text-sm overflow-y-auto">
         {outputDetails ? <>{getOutput()}</> : null}
       </div>
-    </div>
+    </>
   );
 };
 
