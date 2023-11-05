@@ -16,6 +16,8 @@ import OutputDetails from "./OutputDetails";
 import ThemeDropdown from "./ThemeDropdown";
 import LanguagesDropdown from "./LanguagesDropdown";
 
+import YouTubeSearch from "./YoutubeSearch";
+
 
 const defaultSnippet = `#include <iostream>
 
@@ -226,11 +228,13 @@ const Landing = () => {
 
         <div className="right-container flex flex-shrink-0 w-[30%] flex-col">
           <OutputWindow outputDetails={outputDetails} />
-          <div className="flex flex-col items-end">
+          <YouTubeSearch/>
+          {/* <div className="flex flex-col items-end">
             <CustomInput
               customInput={customInput}
               setCustomInput={setCustomInput}
-            />
+            /> */}
+
             {/* <button
               onClick={handleCompile}
               disabled={!code}
@@ -241,7 +245,7 @@ const Landing = () => {
             >
               {processing ? "Processing..." : "Compile and Execute"}
             </button> */}
-          </div>
+          {/* </div> */}
           {outputDetails && <OutputDetails outputDetails={outputDetails} />}
         </div>
       </div>

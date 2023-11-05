@@ -34,7 +34,7 @@ const OutputWindow = ({ outputDetails }) => {
     }
   };
   return (
-    <div className="h-[50%]">
+    <div className="h-[40%] w-[100%]">
 
       <h1 className="font-medium pl-2 bg-clip-text text-white  absolute top-0 border-gray-400 p-2 border-b-[1px] w-[30%]">
         Output
